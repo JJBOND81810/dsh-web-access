@@ -1,0 +1,33 @@
+# web-access layer for a dsh profile.
+#
+# Ports eze-is/web-access (MIT) to dsh: the CDP proxy that upstream ran as a
+# local HTTP server driven by `curl` is replaced by an in-process CDP client,
+# so the model calls `web_*` tools and no shell, curl, or helper script is
+# involved. Chrome is the user's everyday browser (its own login state).
+#
+# Chrome must expose a DevTools endpoint. Two supported routes:
+#   1. chrome://inspect/#remote-debugging -> enable "Allow remote debugging
+#      for this browser instance" (writes DevToolsActivePort; may need a restart)
+#   2. launch Chrome with --remote-debugging-port=9222
+# `port: null` auto-discovers from DevToolsActivePort, then 9222/9229/9333.
+
+- insert:
+    - id: web-access
+      name: dsh-web-access
+      config:
+        # null = auto-discover. Set 9222 (etc.) to pin one instance.
+        port: null
+        # Per-tool-call budget in ms.
+        toolTimeoutMs: 90000
+        # A managed background tab is auto-closed after this much inactivity.
+        tabIdleTimeoutMs: 900000
+        # Upper bound on text one tool result may carry to the model.
+        maxTextChars: 120000
+        # Directory holding accumulated per-domain site experience.
+        # null = $DSH_HOME/web-access/site-patterns
+        sitePatternsDir: null
+        # Register the `cdp` provider on ctx.web, selectable with
+        # `web: { fetchProvider: cdp }`. Off by default: enabling it reroutes
+        # web_fetch through Chrome, which bypasses the anonymous-fetch SSRF
+        # policy and needs Chrome running.
+        provideCdpFetch: false

@@ -1,0 +1,49 @@
+{
+  "name": "dsh-web-access",
+  "version": "2.5.1-dsh.3",
+  "description": "DSH port of eze-is/web-access: full web-access capability (tool selection strategy, in-process Chrome CDP automation, site-experience accumulation) as a native dsh plugin + skill. No HTTP proxy, no curl, no shell.",
+  "license": "MIT",
+  "author": "JJBOND81810 (dsh port) — original web-access by 一泽Eze",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JJBOND81810/dsh-web-access.git"
+  },
+  "homepage": "https://github.com/JJBOND81810/dsh-web-access",
+  "bugs": {
+    "url": "https://github.com/JJBOND81810/dsh-web-access/issues"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./references/*": "./references/*",
+    "./skill/*": "./skill/*",
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "keywords": [
+    "deepseek",
+    "harness",
+    "dsh",
+    "dsh-plugin",
+    "web",
+    "cdp",
+    "browser",
+    "automation"
+  ],
+  "files": [
+    "lib",
+    "skill",
+    "references",
+    "cordis.patch.yml"
+  ]
+}

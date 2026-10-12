@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>web-access tool fixture</title>
+<meta name="description" content="Offline fixture page used to verify dsh-web-access tools end to end.">
+<meta property="og:title" content="web-access tool fixture">
+<link rel="canonical" href="file:///fixture/tools.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"web-access tool fixture"}
+</script>
+</head>
+<body>
+<h1>web-access fixture</h1>
+
+<h2>Click</h2>
+<button id="synthetic" onclick="document.getElementById('click-log').textContent='synthetic-click'">synthetic button</button>
+<button id="real" onmousedown="document.getElementById('click-log').textContent='real-mousedown'">real button</button>
+<p>click-log: <span id="click-log">none</span></p>
+
+<h2>Files</h2>
+<input id="file" type="file"
+       onchange="document.getElementById('file-log').textContent = Array.from(this.files).map(function (f) { return f.name + ':' + f.size }).join(',')">
+<p>file-log: <span id="file-log">none</span></p>
+<p>search: <input id="query" name="q" placeholder="type here" required value="prefilled"></p>
+
+<h2>Video</h2>
+<video id="video" controls width="320"
+       src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"></video>
+
+<h2>Shadow DOM</h2>
+<div id="host"></div>
+
+<h2>Scroll</h2>
+<div style="height:3000px">spacer</div>
+<p id="bottom">bottom marker</p>
+
+<script>
+  // Shadow content is visible to web_read (it pierces shadow roots) but not to
+  // a plain innerText read, so it distinguishes the structured walk from scraping.
+  var shadowRoot = document.getElementById('host').attachShadow({ mode: 'open' });
+  shadowRoot.innerHTML = '<p id="shadow-marker">shadow-only-marker</p>';
+</script>
+</body>
+</html>

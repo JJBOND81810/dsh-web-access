@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this port, please cite it together with the upstream project it derives from."
+title: "dsh-web-access: DeepSeek Harness port of web-access"
+abstract: >-
+  A native DeepSeek Harness (dsh) plugin plus skill that ports eze-is/web-access (MIT):
+  an in-process Chrome DevTools Protocol client exposed as 17 native web_* tools, together
+  with the channel-selection strategy layer (web_search / web_fetch / browser CDP),
+  per-domain experience accumulation, and subagent divide-and-conquer guidance.
+  This is a derivative work, not an upstream release, and is not endorsed by upstream.
+type: software
+version: 2.5.1-dsh.3
+date-released: "2026-10-12"
+license: MIT
+repository-code: "https://github.com/JJBOND81810/dsh-web-access"
+keywords:
+  - deepseek
+  - deepseek-harness
+  - dsh
+  - dsh-plugin
+  - chrome-devtools-protocol
+  - cdp
+  - browser-automation
+  - web-access
+authors:
+  - name: JJBOND81810
+    alias: JJBOND81810
+references:
+  - type: software
+    title: "web-access: 给 Claude Code 装上完整联网能力的 skill（三层通道调度 + 浏览器 CDP + 并行分治）"
+    authors:
+      - name: 一泽 Eze
+        alias: eze-is
+    version: "2.5.1"
+    license: MIT
+    repository-code: "https://github.com/eze-is/web-access"
+    notes: >-
+      Upstream project this repository derives from. Capability design, browsing philosophy,
+      channel-selection strategy, site-experience format, and the original Node helper
+      scripts originate there. Upstream is not affiliated with and does not endorse this port.

@@ -1,0 +1,7 @@
+node_modules/
+asar-out/
+*.log
+.DS_Store
+Thumbs.db
+.selfcheck*
+test/fixture/out/

@@ -1,0 +1,35 @@
+dsh-web-access — a DeepSeek Harness (dsh) port of web-access
+==========================================================
+
+This repository is a DERIVATIVE WORK, not an upstream release.
+
+Capability design, browsing philosophy, channel-selection strategy,
+site-experience format, and the original Node helper scripts come from:
+
+    web-access v2.5.1
+    https://github.com/eze-is/web-access
+    Author: 一泽 Eze (Eze) — MIT License
+
+The upstream package declares `"license": "MIT"` in `.claude-plugin/plugin.json`
+and states "MIT · 作者：一泽 Eze" in its README, but it ships no LICENSE file, so
+the notice in LICENSE here is reconstructed from that declaration with the
+original authorship retained. If upstream publishes a LICENSE with different
+wording, that wording governs for the upstream portions.
+
+What this port changed (full delta in README.md):
+
+  * The local HTTP CDP proxy and every `curl` call are gone. A CDP client runs
+    in the host process and is exposed as native dsh `web_*` tools.
+  * The SKILL.md strategy layer was rewritten against dsh's own tool surface and
+    registered through `ctx.skills`.
+  * Chrome-only path handling was generalized to the whole Chromium family
+    (Chrome / Chromium / Edge / Brave / Vivaldi / Opera).
+  * Twelve real defects found while testing and re-verifying the port were
+    fixed; they are listed in README.md → 「过程中修掉的真实缺陷」.
+
+No upstream file is copied verbatim. The port is a reimplementation against
+dsh's own plugin API: the Node helper scripts were replaced by in-process
+equivalents, and skill/SKILL.md is a rewrite that keeps upstream's strategy
+layer while adapting it to dsh's tool surface.
+
+Upstream is not affiliated with and does not endorse this port.

@@ -1,0 +1,3 @@
+# Bundled seed site-experience files live here.
+# Runtime observations are written to $DSH_HOME/web-access/site-patterns instead;
+# `web_site_patterns` reads both.
